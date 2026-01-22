@@ -1,10 +1,14 @@
-# dummy-ai-project
+# dummy-ai-project - Third Documentation
 
 A demonstration project showcasing AI-powered development workflows and automated task management using Kubernetes Custom Resource Definitions (CRDs).
 
 ## Overview
 
 This project serves as a reference implementation for AI-assisted software development, featuring automated sprint management, task assignment, and pull request workflows orchestrated through Kubernetes CRDs.
+
+## Architecture
+
+The project implements a multi-agent system where specialized AI agents handle different aspects of software development through a Kubernetes-native workflow.
 
 ## Key Features
 
