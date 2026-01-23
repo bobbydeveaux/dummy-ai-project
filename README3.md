@@ -2,6 +2,18 @@
 
 A demonstration project showcasing AI-powered development workflows and automated task management using Kubernetes Custom Resource Definitions (CRDs).
 
+## Quickstart
+
+Get started in under a minute:
+
+```bash
+git clone https://github.com/your-org/dummy-ai-project.git
+kubectl create namespace test-project-hovwr
+kubectl apply -f config/crds/
+```
+
+For detailed setup instructions, see [Getting Started](#getting-started).
+
 ## Installation
 
 This section provides step-by-step instructions to install and configure the dummy-ai-project on your system.
