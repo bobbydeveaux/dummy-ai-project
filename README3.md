@@ -2,17 +2,42 @@
 
 A demonstration project showcasing AI-powered development workflows and automated task management using Kubernetes Custom Resource Definitions (CRDs).
 
-## Quickstart
+## Getting Started
 
-Get started in under a minute:
+This guide will help you set up and start using dummy-ai-project in minutes.
+
+### Quick Start
+
+Get up and running with these essential commands:
 
 ```bash
+# 1. Clone the repository
 git clone https://github.com/your-org/dummy-ai-project.git
+cd dummy-ai-project
+
+# 2. Verify prerequisites
+kubectl version --client
+gh --version
+
+# 3. Set up your Kubernetes environment
 kubectl create namespace test-project-hovwr
+
+# 4. Install Custom Resource Definitions
 kubectl apply -f config/crds/
+
+# 5. Verify installation
+kubectl get crds | grep coo.dev
 ```
 
-For detailed setup instructions, see [Getting Started](#getting-started).
+### Next Steps
+
+After completing the quick start:
+
+1. **Authenticate with GitHub**: Run `gh auth login` to enable GitHub integration
+2. **Explore tasks**: View existing tasks with `kubectl get cootasks -n test-project-hovwr`
+3. **Create your first task**: Follow the [Usage](#usage) guide to create and manage tasks
+
+For detailed installation instructions and troubleshooting, see the [Installation](#installation) section below.
 
 ## Installation
 
@@ -349,31 +374,24 @@ Before installing and using this project, ensure you have the following tools in
 - **GitHub authentication failed**: Run `gh auth login` and follow the prompts
 - **Namespace already exists**: This is expected if the namespace was created previously
 
-## Getting Started
+## Usage
 
 This project demonstrates automated development workflows. Tasks are managed through Kubernetes CRDs and automatically assigned to AI agents for implementation.
 
-### Quick Start
+### Working with Tasks
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/your-org/dummy-ai-project.git
-   cd dummy-ai-project
-   ```
-
-2. **View existing tasks**
+1. **View existing tasks**
    ```bash
    kubectl get cootasks -n test-project-hovwr
    ```
 
-3. **Check task status**
+2. **Check task status**
    ```bash
    kubectl describe cootask <task-name> -n test-project-hovwr
    ```
 
-### Usage
-
-Tasks are created as CooTask CRDs and automatically processed by designated AI agents. Each task follows a structured workflow from assignment through implementation to review.
+3. **Monitor task progress**
+   Tasks are automatically processed by designated AI agents. Each task follows a structured workflow from assignment through implementation to review.
 
 ## Workflow Example
 
