@@ -38,6 +38,35 @@ This project demonstrates automated development workflows. Tasks are managed thr
 
 Tasks are created as CooTask CRDs and automatically processed by designated AI agents. Each task follows a structured workflow from assignment through implementation to review.
 
+### Quick Start Example
+
+To see the system in action, here's how a task flows through the system:
+
+```bash
+# Create a new task
+kubectl apply -f - <<EOF
+apiVersion: coo.dev/v1alpha1
+kind: CooTask
+metadata:
+  name: example-task
+  namespace: test-project
+spec:
+  title: "Add new feature"
+  assignedAgent: "feature-developer"
+  issueNumber: 42
+EOF
+
+# Check task status
+kubectl get cootask example-task -n test-project
+
+# The assigned agent will automatically:
+# 1. Create a feature branch
+# 2. Implement the changes
+# 3. Create a draft PR with implementation plan
+# 4. Mark PR ready for review
+# 5. Update task status to PendingReview
+```
+
 ## Project Structure
 
 This is a demonstration project designed to showcase AI-powered development patterns and automated task management workflows.
