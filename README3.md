@@ -199,6 +199,32 @@ Configure agent assignment through task labels in GitHub or directly in CooTask 
 
 The project implements a multi-agent system where specialized AI agents handle different aspects of software development through a Kubernetes-native workflow.
 
+### System Components
+
+1. **CooTask Custom Resources**: Kubernetes CRDs that represent development tasks with lifecycle management
+2. **AI Agent Orchestration**: Intelligent agents assigned to specific task types (crd-designer, api-developer, etc.)
+3. **GitHub Integration**: Automated PR creation, issue tracking, and status synchronization
+4. **Workflow Engine**: Coordinates the flow from task creation through implementation to review
+
+### Development Workflow
+
+The system follows a structured 5-step workflow for each task:
+
+1. **Draft PR Creation**: Agent creates a draft PR with detailed implementation plan
+2. **Status Update**: Task status updated to "InProgress" with PR information
+3. **Implementation**: Agent implements changes according to the plan
+4. **Ready for Review**: PR marked ready and status updated to "PendingReview"
+5. **Review & Merge**: Human review, feedback incorporation, and merge
+
+### Agent Roles
+
+Different agents specialize in different types of tasks:
+
+- **crd-designer**: Designs and implements Kubernetes CRD schemas and API definitions
+- **api-developer**: Implements REST APIs and backend services
+- **frontend-developer**: Creates user interfaces and client-side applications
+- **devops-engineer**: Handles infrastructure, deployment, and CI/CD workflows
+
 ## Key Features
 
 - **AI-Powered Development**: Automated code generation and implementation by AI agents
@@ -246,9 +272,22 @@ This project demonstrates automated development workflows. Tasks are managed thr
 
 Tasks are created as CooTask CRDs and automatically processed by designated AI agents. Each task follows a structured workflow from assignment through implementation to review.
 
+## Workflow Example
+
+Here's how a typical task flows through the system:
+
+1. Issue #17 created: "Add Third README with project description"
+2. CooTask CRD created and assigned to crd-designer agent
+3. Agent creates draft PR with implementation plan
+4. Agent analyzes requirements and implements changes
+5. Changes committed and PR marked ready for review
+6. Human reviewer provides feedback
+7. Agent addresses feedback and updates PR
+8. PR merged, task marked complete
+
 ### Quick Start Example
 
-To see the system in action, here's how a task flows through the system:
+To see the system in action with your own task:
 
 ```bash
 # Create a new task
@@ -279,45 +318,46 @@ kubectl get cootask example-task -n test-project
 
 This is a demonstration project designed to showcase AI-powered development patterns and automated task management workflows.
 
-## Workflow Example
+### Current Structure
 
-A typical development workflow in this project:
+- **Documentation**: README files demonstrating documentation workflows
 
-1. **Task Creation**: A GitHub issue is created with a feature request or bug report
-2. **Sprint Planning**: Tasks are organized into sprints using CooTask CRDs
-3. **Agent Assignment**: The system assigns an appropriate AI agent (e.g., crd-designer) to the task
-4. **Implementation**: The agent analyzes requirements, creates a plan, and implements the solution
-5. **Pull Request**: Changes are submitted as a draft PR with an implementation plan
-6. **Review**: The PR is marked ready for human review
-7. **Merge**: After approval, changes are merged into the main branch
+### Planned Architecture Components
 
-## Agent Roles
+As this project evolves, the following directories will be added:
 
-Different AI agents handle different types of tasks:
+- **CRD Definitions**: Kubernetes Custom Resource Definitions for task management
+- **Agent Scripts**: AI agent implementation and orchestration logic
+- **Workflow Configs**: GitHub Actions and automation configurations
 
-- **crd-designer**: Handles CRD-related tasks and documentation
-- **feature-developer**: Implements new features and enhancements
-- **bug-fixer**: Addresses bug reports and issues
-- **test-writer**: Creates and maintains test suites
+## Benefits of This Approach
 
-## Development Workflow
-
-Tasks follow a structured lifecycle:
-- `Assigned` → Agent receives the task
-- `InProgress` → Agent is working on implementation
-- `PendingReview` → PR created and awaiting review
-- `Completed` → Task merged and closed
-
-## Benefits
-
-- **Consistency**: Standardized workflows ensure consistent code quality
+- **Consistency**: Standardized workflows ensure consistent development practices
+- **Traceability**: Every change linked to tasks, PRs, and reviews
+- **Automation**: Reduces manual overhead in task management and PR creation
+- **Scalability**: Easy to add new agents and task types
+- **Observability**: Clear visibility into task status and progress through Kubernetes
 - **Efficiency**: Automated task management reduces overhead
 - **Transparency**: Full visibility into task status and progress
-- **Scalability**: Can handle multiple concurrent tasks across different agents
 
 ## Contributing
 
 This project follows an automated development workflow where tasks are assigned to AI agents for implementation and human review.
+
+### For Human Contributors
+
+1. Review PRs created by AI agents
+2. Provide constructive feedback
+3. Approve and merge completed work
+4. Create new issues for tasks
+
+### For AI Agents
+
+1. Monitor assigned tasks via CooTask CRDs
+2. Create implementation plans in draft PRs
+3. Implement changes following best practices
+4. Respond to review feedback
+5. Update task status throughout lifecycle
 
 ## Task Management
 
