@@ -1,6 +1,8 @@
-# dummy-ai-project - Third Documentation
+# dummy-ai-project - Comprehensive Documentation
 
 A demonstration project showcasing AI-powered development workflows and automated task management using Kubernetes Custom Resource Definitions (CRDs).
+
+> **Note**: This is the third README file in the project. README.md provides basic information, README2.md covers additional details, and this README3.md offers comprehensive documentation including installation, configuration, architecture, and workflows.
 
 ## Installation
 
@@ -87,7 +89,7 @@ Before installing, ensure you have:
 After installation, verify that everything is working correctly:
 
 ```bash
-# List all CooTask resources
+# List all CooTask resources in the test-project-hovwr namespace
 kubectl get cootasks -n test-project-hovwr
 
 # Check CRD details
@@ -258,7 +260,8 @@ This project demonstrates automated development workflows. Tasks are managed thr
 
 3. **Check task status**
    ```bash
-   kubectl describe cootask <task-name> -n test-project-hovwr
+   # Example: Check status of a specific task
+   kubectl describe cootask sprint-1-issue-10 -n test-project-hovwr
    ```
 
 ### Usage
@@ -367,10 +370,16 @@ Tasks in this project are managed through a sophisticated CRD-based system that 
 ### Task Status Tracking
 Tasks can be monitored through Kubernetes:
 ```bash
-kubectl get cootasks -n <namespace>
-kubectl describe cootask <task-name> -n <namespace>
+# List all tasks in a namespace
+kubectl get cootasks -n test-project-hovwr
+
+# Get detailed information about a specific task
+kubectl describe cootask sprint-1-issue-10 -n test-project-hovwr
+
+# Watch task status in real-time
+kubectl get cootasks -n test-project-hovwr --watch
 ```
 
 ## License
 
-MIT
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
