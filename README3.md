@@ -245,7 +245,7 @@ Different agents specialize in different types of tasks:
 
 Before installing and using this project, ensure you have the following tools installed:
 
-1. **Kubernetes Cluster** (v1.19 or higher)
+1. **Kubernetes Cluster** (v1.24 or higher)
    - Local: [Minikube](https://minikube.sigs.k8s.io/), [kind](https://kind.sigs.k8s.io/), or [Docker Desktop](https://www.docker.com/products/docker-desktop)
    - Cloud: GKE, EKS, AKS, or any Kubernetes-compatible cluster
 
@@ -333,7 +333,7 @@ Before installing and using this project, ensure you have the following tools in
 ### Troubleshooting
 
 - **kubectl command not found**: Ensure kubectl is in your PATH after installation
-- **CRD not found**: Verify that your Kubernetes cluster supports custom resources (v1.19+)
+- **CRD not found**: Verify that your Kubernetes cluster supports custom resources (v1.24+)
 - **GitHub authentication failed**: Run `gh auth login` and follow the prompts
 - **Namespace already exists**: This is expected if the namespace was created previously
 
