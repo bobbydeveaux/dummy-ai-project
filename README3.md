@@ -2,6 +2,17 @@
 
 A demonstration project showcasing AI-powered development workflows and automated task management using Kubernetes Custom Resource Definitions (CRDs).
 
+## Project Status
+
+This is an **active demonstration project** designed to showcase AI-powered development workflows. The project uses Kubernetes CRDs for task management and features automated sprint-based development cycles with AI agent collaboration.
+
+**Current Features:**
+- ✅ Kubernetes CRD-based task management
+- ✅ Multi-agent AI development system
+- ✅ Automated PR workflows
+- ✅ Sprint-based task organization
+- ✅ GitHub integration
+
 ## Getting Started
 
 This guide will help you set up and start using dummy-ai-project in minutes.
@@ -276,103 +287,6 @@ Different agents specialize in different types of tasks:
 - AI agent orchestration
 - Git workflow automation
 
-## Installation
-
-### Prerequisites
-
-Before installing and using this project, ensure you have the following tools installed:
-
-1. **Kubernetes Cluster** (v1.19 or higher)
-   - Local: [Minikube](https://minikube.sigs.k8s.io/), [kind](https://kind.sigs.k8s.io/), or [Docker Desktop](https://www.docker.com/products/docker-desktop)
-   - Cloud: GKE, EKS, AKS, or any Kubernetes-compatible cluster
-
-2. **kubectl** - Kubernetes command-line tool
-   ```bash
-   # macOS
-   brew install kubectl
-
-   # Linux
-   curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-   sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-
-   # Windows (using Chocolatey)
-   choco install kubernetes-cli
-   ```
-
-3. **GitHub CLI (gh)** - Required for PR operations
-   ```bash
-   # macOS
-   brew install gh
-
-   # Linux
-   curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
-   echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
-   sudo apt update
-   sudo apt install gh
-
-   # Windows (using Chocolatey)
-   choco install gh
-   ```
-
-4. **Git** - Version control system
-   ```bash
-   # macOS
-   brew install git
-
-   # Linux
-   sudo apt-get install git
-
-   # Windows (using Chocolatey)
-   choco install git
-   ```
-
-### Installation Steps
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/your-org/dummy-ai-project.git
-   cd dummy-ai-project
-   ```
-
-2. **Set up Kubernetes context**
-   ```bash
-   # Verify kubectl is configured
-   kubectl cluster-info
-
-   # Create namespace for the project
-   kubectl create namespace test-project-hovwr
-   ```
-
-3. **Install Custom Resource Definitions (CRDs)**
-   ```bash
-   # Apply CRD definitions (if available in the repository)
-   kubectl apply -f crds/
-   ```
-
-4. **Configure GitHub CLI**
-   ```bash
-   # Authenticate with GitHub
-   gh auth login
-
-   # Verify authentication
-   gh auth status
-   ```
-
-5. **Verify installation**
-   ```bash
-   # Check that CRDs are installed
-   kubectl get crds | grep coo.dev
-
-   # List any existing tasks
-   kubectl get cootasks -n test-project-hovwr
-   ```
-
-### Troubleshooting
-
-- **kubectl command not found**: Ensure kubectl is in your PATH after installation
-- **CRD not found**: Verify that your Kubernetes cluster supports custom resources (v1.19+)
-- **GitHub authentication failed**: Run `gh auth login` and follow the prompts
-- **Namespace already exists**: This is expected if the namespace was created previously
 
 ## Usage
 
