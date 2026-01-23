@@ -146,6 +146,39 @@ kubectl delete crd cootasks.coo.dev
 
 This project serves as a reference implementation for AI-assisted software development, featuring automated sprint management, task assignment, and pull request workflows orchestrated through Kubernetes CRDs.
 
+## Getting Started
+
+This project demonstrates automated development workflows. Tasks are managed through Kubernetes CRDs and automatically assigned to AI agents for implementation.
+
+### Quick Start
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-org/dummy-ai-project.git
+   cd dummy-ai-project
+   ```
+
+2. **View existing tasks**
+   ```bash
+   kubectl get cootasks -n test-project-hovwr
+   ```
+
+3. **Check task status**
+   ```bash
+   kubectl describe cootask <task-name> -n test-project-hovwr
+   ```
+
+### Prerequisites
+
+- Kubernetes cluster with CRD support
+- GitHub repository access
+- kubectl CLI tool
+- gh CLI (GitHub CLI) for PR operations
+
+### Usage
+
+Tasks are created as CooTask CRDs and automatically processed by designated AI agents. Each task follows a structured workflow from assignment through implementation to review.
+
 ## Configuration
 
 The system can be configured through environment variables and Kubernetes settings to customize the behavior of the AI-powered development workflow.
@@ -336,39 +369,6 @@ Before installing and using this project, ensure you have the following tools in
 - **CRD not found**: Verify that your Kubernetes cluster supports custom resources (v1.19+)
 - **GitHub authentication failed**: Run `gh auth login` and follow the prompts
 - **Namespace already exists**: This is expected if the namespace was created previously
-
-## Getting Started
-
-This project demonstrates automated development workflows. Tasks are managed through Kubernetes CRDs and automatically assigned to AI agents for implementation.
-
-### Quick Start
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/your-org/dummy-ai-project.git
-   cd dummy-ai-project
-   ```
-
-2. **View existing tasks**
-   ```bash
-   kubectl get cootasks -n test-project-hovwr
-   ```
-
-3. **Check task status**
-   ```bash
-   kubectl describe cootask <task-name> -n test-project-hovwr
-   ```
-
-### Prerequisites
-
-- Kubernetes cluster with CRD support
-- GitHub repository access
-- kubectl CLI tool
-- gh CLI (GitHub CLI) for PR operations
-
-### Usage
-
-Tasks are created as CooTask CRDs and automatically processed by designated AI agents. Each task follows a structured workflow from assignment through implementation to review.
 
 ## Workflow Example
 
