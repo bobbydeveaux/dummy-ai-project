@@ -2,6 +2,146 @@
 
 A demonstration project showcasing AI-powered development workflows and automated task management using Kubernetes Custom Resource Definitions (CRDs).
 
+## Installation
+
+This section provides step-by-step instructions to install and configure the dummy-ai-project on your system.
+
+### System Requirements
+
+- **Kubernetes**: Version 1.19 or higher
+- **kubectl**: Kubernetes command-line tool
+- **GitHub CLI (gh)**: For GitHub API operations and PR management
+- **Git**: Version 2.0 or higher
+- **Operating System**: Linux, macOS, or Windows with WSL2
+
+### Prerequisites
+
+Before installing, ensure you have:
+
+1. **A running Kubernetes cluster** with CRD support (minikube, kind, or cloud provider)
+2. **kubectl configured** with access to your cluster
+3. **GitHub repository access** with appropriate permissions
+4. **GitHub CLI authenticated** with your GitHub account
+
+### Installation Steps
+
+1. **Verify Kubernetes cluster access**
+   ```bash
+   kubectl cluster-info
+   kubectl version --client
+   ```
+
+2. **Install GitHub CLI** (if not already installed)
+
+   On macOS:
+   ```bash
+   brew install gh
+   ```
+
+   On Linux:
+   ```bash
+   curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
+   echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null
+   sudo apt update
+   sudo apt install gh
+   ```
+
+   On Windows:
+   ```bash
+   winget install --id GitHub.cli
+   ```
+
+3. **Authenticate GitHub CLI**
+   ```bash
+   gh auth login
+   ```
+
+4. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-org/dummy-ai-project.git
+   cd dummy-ai-project
+   ```
+
+5. **Install Custom Resource Definitions**
+   ```bash
+   # Apply CRD definitions to your cluster
+   kubectl apply -f config/crds/
+   ```
+
+6. **Create the project namespace**
+   ```bash
+   kubectl create namespace test-project-hovwr
+   ```
+
+7. **Verify installation**
+   ```bash
+   # Check that CRDs are installed
+   kubectl get crds | grep coo.dev
+
+   # Verify namespace exists
+   kubectl get namespace test-project-hovwr
+   ```
+
+### Post-Installation Verification
+
+After installation, verify that everything is working correctly:
+
+```bash
+# List all CooTask resources
+kubectl get cootasks -n test-project-hovwr
+
+# Check CRD details
+kubectl describe crd cootasks.coo.dev
+
+# Test creating a sample task
+kubectl apply -f - <<EOF
+apiVersion: coo.dev/v1alpha1
+kind: CooTask
+metadata:
+  name: test-task
+  namespace: test-project-hovwr
+spec:
+  title: "Test installation"
+  assignedAgent: "test-agent"
+  issueNumber: 1
+EOF
+
+# Verify the task was created
+kubectl get cootask test-task -n test-project-hovwr
+
+# Clean up test task
+kubectl delete cootask test-task -n test-project-hovwr
+```
+
+### Troubleshooting
+
+**Issue: CRD not found**
+- Ensure your Kubernetes version supports CRDs (v1.19+)
+- Check if CRDs were applied: `kubectl get crds`
+
+**Issue: Permission denied**
+- Verify your kubectl context has admin privileges
+- Check RBAC permissions: `kubectl auth can-i create crd`
+
+**Issue: GitHub CLI authentication failed**
+- Run `gh auth login` again and follow the prompts
+- Ensure you have appropriate repository permissions
+
+### Uninstall
+
+To remove the project from your cluster:
+
+```bash
+# Delete all CooTask resources
+kubectl delete cootasks --all -n test-project-hovwr
+
+# Delete the namespace
+kubectl delete namespace test-project-hovwr
+
+# Remove CRDs (optional, use with caution)
+kubectl delete crd cootasks.coo.dev
+```
+
 ## Overview
 
 This project serves as a reference implementation for AI-assisted software development, featuring automated sprint management, task assignment, and pull request workflows orchestrated through Kubernetes CRDs.
