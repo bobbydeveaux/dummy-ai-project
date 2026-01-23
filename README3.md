@@ -42,6 +42,42 @@ Tasks are created as CooTask CRDs and automatically processed by designated AI a
 
 This is a demonstration project designed to showcase AI-powered development patterns and automated task management workflows.
 
+## Workflow Example
+
+A typical development workflow in this project:
+
+1. **Task Creation**: A GitHub issue is created with a feature request or bug report
+2. **Sprint Planning**: Tasks are organized into sprints using CooTask CRDs
+3. **Agent Assignment**: The system assigns an appropriate AI agent (e.g., crd-designer) to the task
+4. **Implementation**: The agent analyzes requirements, creates a plan, and implements the solution
+5. **Pull Request**: Changes are submitted as a draft PR with an implementation plan
+6. **Review**: The PR is marked ready for human review
+7. **Merge**: After approval, changes are merged into the main branch
+
+## Agent Roles
+
+Different AI agents handle different types of tasks:
+
+- **crd-designer**: Handles CRD-related tasks and documentation
+- **feature-developer**: Implements new features and enhancements
+- **bug-fixer**: Addresses bug reports and issues
+- **test-writer**: Creates and maintains test suites
+
+## Development Workflow
+
+Tasks follow a structured lifecycle:
+- `Assigned` → Agent receives the task
+- `InProgress` → Agent is working on implementation
+- `PendingReview` → PR created and awaiting review
+- `Completed` → Task merged and closed
+
+## Benefits
+
+- **Consistency**: Standardized workflows ensure consistent code quality
+- **Efficiency**: Automated task management reduces overhead
+- **Transparency**: Full visibility into task status and progress
+- **Scalability**: Can handle multiple concurrent tasks across different agents
+
 ## Contributing
 
 This project follows an automated development workflow where tasks are assigned to AI agents for implementation and human review.
