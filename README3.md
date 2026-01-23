@@ -6,6 +6,55 @@ A demonstration project showcasing AI-powered development workflows and automate
 
 This project serves as a reference implementation for AI-assisted software development, featuring automated sprint management, task assignment, and pull request workflows orchestrated through Kubernetes CRDs.
 
+## Configuration
+
+The system can be configured through environment variables and Kubernetes settings to customize the behavior of the AI-powered development workflow.
+
+### Environment Variables
+
+- **GITHUB_TOKEN**: GitHub API token for repository access and PR operations
+  - Required for: Creating PRs, updating issues, managing labels
+  - Scopes needed: `repo`, `workflow`
+
+- **KUBERNETES_NAMESPACE**: Namespace for CooTask CRDs
+  - Default: `test-project-hovwr`
+  - Used for task isolation and organization
+
+- **DEFAULT_BRANCH**: Main branch name for pull requests
+  - Default: `main`
+  - Target branch for all PRs
+
+### Kubernetes Configuration
+
+The system uses Custom Resource Definitions (CRDs) for task management. Configure your cluster:
+
+```yaml
+apiVersion: coo.dev/v1alpha1
+kind: CooTask
+metadata:
+  namespace: test-project-hovwr  # Configure your namespace
+spec:
+  assignedAgent: "crd-designer"  # Agent assignment
+  issueNumber: 28                # GitHub issue number
+```
+
+### Agent Configuration
+
+Different AI agents can be configured for specific task types:
+
+- **crd-designer**: CRD-related tasks and documentation updates
+- **feature-developer**: New feature implementation
+- **bug-fixer**: Bug fixes and issue resolution
+- **test-writer**: Test creation and maintenance
+
+Configure agent assignment through task labels in GitHub or directly in CooTask specs.
+
+### GitHub Integration Settings
+
+- **Repository**: Configure in `.git/config`
+- **PR Settings**: Draft PRs are created by default, then marked ready after implementation
+- **Review Flow**: PRs require human review before merging
+
 ## Architecture
 
 The project implements a multi-agent system where specialized AI agents handle different aspects of software development through a Kubernetes-native workflow.
