@@ -2,6 +2,17 @@
 
 A demonstration project showcasing AI-powered development workflows and automated task management using Kubernetes Custom Resource Definitions (CRDs).
 
+## Project Status
+
+This is an **active demonstration project** designed to showcase AI-powered development workflows. The project uses Kubernetes CRDs for task management and features automated sprint-based development cycles with AI agent collaboration.
+
+**Current Features:**
+- ✅ Kubernetes CRD-based task management
+- ✅ Multi-agent AI development system
+- ✅ Automated PR workflows
+- ✅ Sprint-based task organization
+- ✅ GitHub integration
+
 ## Quickstart
 
 Get started in under a minute:
