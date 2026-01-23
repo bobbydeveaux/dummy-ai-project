@@ -101,6 +101,25 @@ Tasks follow a structured lifecycle:
 
 This project follows an automated development workflow where tasks are assigned to AI agents for implementation and human review.
 
+## Task Management
+
+Tasks in this project are managed through a sophisticated CRD-based system that automates the entire development lifecycle:
+
+### Task Lifecycle
+1. **Creation**: Issues are created in GitHub and represented as CooTask CRDs
+2. **Assignment**: Tasks are automatically assigned to specialized AI agents based on labels
+3. **Planning**: Agents create draft PRs with detailed implementation plans
+4. **Implementation**: Agents make code changes and push to the PR
+5. **Review**: PRs are marked ready for human review
+6. **Completion**: After approval, changes are merged and tasks marked complete
+
+### Task Status Tracking
+Tasks can be monitored through Kubernetes:
+```bash
+kubectl get cootasks -n <namespace>
+kubectl describe cootask <task-name> -n <namespace>
+```
+
 ## License
 
 MIT
