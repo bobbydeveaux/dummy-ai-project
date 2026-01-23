@@ -81,11 +81,16 @@ Here's how a typical task flows through the system:
 
 This is a demonstration project designed to showcase AI-powered development patterns and automated task management workflows.
 
-### Key Directories
+### Current Structure
+
+- **Documentation**: README files demonstrating documentation workflows
+
+### Planned Architecture Components
+
+As this project evolves, the following directories will be added:
 
 - **CRD Definitions**: Kubernetes Custom Resource Definitions for task management
 - **Agent Scripts**: AI agent implementation and orchestration logic
-- **Documentation**: README files demonstrating documentation workflows
 - **Workflow Configs**: GitHub Actions and automation configurations
 
 ## Benefits of This Approach
