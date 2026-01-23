@@ -314,24 +314,6 @@ kubectl get cootask example-task -n test-project
 # 5. Update task status to PendingReview
 ```
 
-## Architecture
-
-The project implements a multi-agent system where specialized AI agents handle different aspects of software development through a Kubernetes-native workflow.
-
-## Key Features
-
-- **AI-Powered Development**: Automated code generation and implementation by AI agents
-- **CRD-Based Task Management**: Kubernetes-native task tracking and assignment
-- **Automated Workflows**: Seamless integration between issue creation, implementation, and review
-- **Sprint-Based Organization**: Structured development cycles with automated task distribution
-
-## Technologies
-
-- Kubernetes Custom Resource Definitions (CRDs)
-- GitHub API integration
-- AI agent orchestration
-- Git workflow automation
-
 ## Project Structure
 
 This is a demonstration project designed to showcase AI-powered development patterns and automated task management workflows.
