@@ -28,11 +28,30 @@ The project implements a multi-agent system where specialized AI agents handle d
 
 This project demonstrates automated development workflows. Tasks are managed through Kubernetes CRDs and automatically assigned to AI agents for implementation.
 
+### Quick Start
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-org/dummy-ai-project.git
+   cd dummy-ai-project
+   ```
+
+2. **View existing tasks**
+   ```bash
+   kubectl get cootasks -n test-project-hovwr
+   ```
+
+3. **Check task status**
+   ```bash
+   kubectl describe cootask <task-name> -n test-project-hovwr
+   ```
+
 ### Prerequisites
 
 - Kubernetes cluster with CRD support
 - GitHub repository access
 - kubectl CLI tool
+- gh CLI (GitHub CLI) for PR operations
 
 ### Usage
 
