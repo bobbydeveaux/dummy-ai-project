@@ -8,7 +8,7 @@ This section provides step-by-step instructions to install and configure the dum
 
 ### System Requirements
 
-- **Kubernetes**: Version 1.19 or higher
+- **Kubernetes**: Version 1.24 or higher
 - **kubectl**: Kubernetes command-line tool
 - **GitHub CLI (gh)**: For GitHub API operations and PR management
 - **Git**: Version 2.0 or higher
@@ -116,7 +116,7 @@ kubectl delete cootask test-task -n test-project-hovwr
 ### Troubleshooting
 
 **Issue: CRD not found**
-- Ensure your Kubernetes version supports CRDs (v1.19+)
+- Ensure your Kubernetes version supports CRDs (v1.24+)
 - Check if CRDs were applied: `kubectl get crds`
 
 **Issue: Permission denied**
@@ -261,13 +261,6 @@ This project demonstrates automated development workflows. Tasks are managed thr
    kubectl describe cootask <task-name> -n test-project-hovwr
    ```
 
-### Prerequisites
-
-- Kubernetes cluster with CRD support
-- GitHub repository access
-- kubectl CLI tool
-- gh CLI (GitHub CLI) for PR operations
-
 ### Usage
 
 Tasks are created as CooTask CRDs and automatically processed by designated AI agents. Each task follows a structured workflow from assignment through implementation to review.
@@ -296,7 +289,7 @@ apiVersion: coo.dev/v1alpha1
 kind: CooTask
 metadata:
   name: example-task
-  namespace: test-project
+  namespace: test-project-hovwr
 spec:
   title: "Add new feature"
   assignedAgent: "feature-developer"
@@ -304,7 +297,7 @@ spec:
 EOF
 
 # Check task status
-kubectl get cootask example-task -n test-project
+kubectl get cootask example-task -n test-project-hovwr
 
 # The assigned agent will automatically:
 # 1. Create a feature branch
