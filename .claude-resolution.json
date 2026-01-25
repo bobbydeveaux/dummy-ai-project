@@ -1,6 +1,6 @@
 {
   "method": "ai-assisted",
   "filesResolved": 1,
-  "summary": "Resolved conflict in TEST.md by keeping the HEAD version (issue #130) which contains the title 'Quantum Butterflies in the Digital Garden'. The origin/main version was from issue #128 which had already been merged in PR #135. Since this PR (#134) is for issue #130, keeping the current branch's version is appropriate.",
-  "strategyUsed": "chose ours - the conflict was between two different random title updates for different issues. Since the main branch version (issue #128) was already merged, and we're working on issue #130, kept the current branch's version to preserve this PR's intended changes."
+  "summary": "Resolved TEST.md conflict by preserving the feature branch version ('The Enchanted Chronicles of Robotic Butterflies') as it represents the intended state of PR #133",
+  "strategyUsed": "Chose HEAD version for TEST.md since both branches modified test documentation independently, and the feature branch (feature/129) has the more recent updates that are part of this PR's scope"
 }
