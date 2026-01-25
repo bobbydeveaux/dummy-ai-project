@@ -1,9 +1,9 @@
 {
-  "prNumber": 123,
+  "prNumber": 134,
   "baseBranch": "main",
-  "headBranch": "feature/122-sprint-1-issue-122",
+  "headBranch": "feature/130-sprint-1-issue-130",
   "conflictedFiles": [
-    "NEWTEST.md"
+    "TEST.md"
   ],
   "conflictCount": 1
 }
