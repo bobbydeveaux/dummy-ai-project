@@ -1,6 +1,6 @@
 {
   "method": "ai-assisted",
   "filesResolved": 1,
-  "summary": "Resolved conflict in TEST.md by keeping the main branch title 'The Spectacular Adventures of Binary Butterflies in Cyberspace' which was merged more recently",
-  "strategyUsed": "chose theirs (main branch) - preserved the more recent title change that was already merged to main via PR #121, avoiding regression of already-merged work"
+  "summary": "Resolved conflict in NEWTEST.md by accepting the main branch version. Both branches independently added this file with different content. The main branch version (technical article about distributed computing) was chosen as it represents the current state of the project that was merged after this feature branch was created.",
+  "strategyUsed": "Accepted 'theirs' (origin/main) for NEWTEST.md. Both branches added this file independently - our branch with a poetic metaphorical piece about binary dreams, and main with a technical article about distributed computing. Chose main's version to maintain consistency with the current project state and avoid content divergence."
 }
