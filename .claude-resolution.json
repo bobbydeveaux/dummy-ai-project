@@ -1,0 +1,6 @@
+{
+  "method": "ai-assisted",
+  "filesResolved": 1,
+  "summary": "Resolved conflict in TEST.md by keeping the main branch title 'The Spectacular Adventures of Binary Butterflies in Cyberspace' which was merged more recently",
+  "strategyUsed": "chose theirs (main branch) - preserved the more recent title change that was already merged to main via PR #121, avoiding regression of already-merged work"
+}
