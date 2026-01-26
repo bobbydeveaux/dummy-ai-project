@@ -144,6 +144,44 @@ def test_weather_data_structure():
     assert "speed" in result["wind"]
 
 
+def test_get_random_city():
+    """Test that get_random_city returns a city from the default list."""
+    client = WeatherClient()
+    random_city = client.get_random_city()
+
+    assert random_city is not None
+    assert isinstance(random_city, str)
+    assert len(random_city) > 0
+    assert random_city in client.DEFAULT_CITIES
+
+
+def test_get_random_city_multiple_calls():
+    """Test that get_random_city can be called multiple times."""
+    client = WeatherClient()
+    cities = [client.get_random_city() for _ in range(10)]
+
+    # All cities should be valid
+    for city in cities:
+        assert city in client.DEFAULT_CITIES
+
+    # Should have at least some variation (not guaranteed, but highly likely)
+    assert len(cities) == 10
+
+
+def test_default_cities_list_exists():
+    """Test that DEFAULT_CITIES is properly defined."""
+    client = WeatherClient()
+
+    assert hasattr(client, 'DEFAULT_CITIES')
+    assert isinstance(client.DEFAULT_CITIES, list)
+    assert len(client.DEFAULT_CITIES) > 0
+
+    # All entries should be non-empty strings
+    for city in client.DEFAULT_CITIES:
+        assert isinstance(city, str)
+        assert len(city) > 0
+
+
 if __name__ == "__main__":
     # Run tests manually for verification
     print("Running test_weather_client_initialization...")
@@ -180,6 +218,18 @@ if __name__ == "__main__":
 
     print("Running test_weather_data_structure...")
     test_weather_data_structure()
+    print("✓ Passed")
+
+    print("Running test_get_random_city...")
+    test_get_random_city()
+    print("✓ Passed")
+
+    print("Running test_get_random_city_multiple_calls...")
+    test_get_random_city_multiple_calls()
+    print("✓ Passed")
+
+    print("Running test_default_cities_list_exists...")
+    test_default_cities_list_exists()
     print("✓ Passed")
 
     print("\nAll tests passed!")
