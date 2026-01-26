@@ -3,11 +3,19 @@
 import requests
 import sys
 import json
+import random
 from typing import Dict, Optional
 
 
 class WeatherClient:
     """Client for fetching weather information."""
+
+    # List of cities for random selection
+    DEFAULT_CITIES = [
+        "London", "Paris", "Tokyo", "New York", "Sydney",
+        "Berlin", "Rome", "Madrid", "Toronto", "Mumbai",
+        "Dubai", "Singapore", "Amsterdam", "Seoul", "Bangkok"
+    ]
 
     def __init__(self, api_key: Optional[str] = None):
         """Initialize the weather client.
@@ -89,6 +97,14 @@ class WeatherClient:
             "mock": True  # Indicator that this is mock data
         }
 
+    def get_random_city(self) -> str:
+        """Get a random city from the default cities list.
+
+        Returns:
+            Random city name
+        """
+        return random.choice(self.DEFAULT_CITIES)
+
     def format_weather(self, weather_data: Dict) -> str:
         """Format weather data into a readable string.
 
@@ -128,18 +144,20 @@ Wind Speed: {wind_speed} m/s
 
 def main():
     """Main function to run the weather script."""
-    if len(sys.argv) < 2:
-        print("Usage: python weather.py <city_name> [api_key]")
-        print("\nExample:")
-        print("  python weather.py London")
-        print("  python weather.py \"New York\" YOUR_API_KEY")
-        print("\nNote: Without an API key, the script runs in demo mode with mock data.")
-        sys.exit(1)
+    # Parse arguments
+    city = None
+    api_key = None
 
-    city = sys.argv[1]
-    api_key = sys.argv[2] if len(sys.argv) > 2 else None
+    if len(sys.argv) >= 2:
+        city = sys.argv[1]
+        api_key = sys.argv[2] if len(sys.argv) > 2 else None
 
     client = WeatherClient(api_key)
+
+    # If no city provided, pick a random one
+    if not city:
+        city = client.get_random_city()
+        print(f"No city specified. Randomly selected: {city}\n")
 
     try:
         weather_data = client.get_weather(city)
