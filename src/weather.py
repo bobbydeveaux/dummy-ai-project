@@ -154,25 +154,25 @@ def main():
 
     client = WeatherClient(api_key)
 
-    # If no city provided, pick 5 random cities
+    # If no city provided, pick 3 random cities
     if not city:
         cities = []
-        # Get 5 unique random cities
+        # Get 3 unique random cities
         available_cities = client.DEFAULT_CITIES.copy()
-        for _ in range(min(5, len(available_cities))):
+        for _ in range(min(3, len(available_cities))):
             selected_city = random.choice(available_cities)
             cities.append(selected_city)
             available_cities.remove(selected_city)
 
-        print(f"No city specified. Randomly selected 5 cities: {', '.join(cities)}\n")
+        print(f"No city specified. Randomly selected 3 cities: {', '.join(cities)}\n")
 
-        # Fetch and display weather for all 5 cities
+        # Fetch and display weather for all 3 cities
         for i, city_name in enumerate(cities, 1):
             try:
                 weather_data = client.get_weather(city_name)
                 formatted_output = client.format_weather(weather_data)
                 print(f"\n{'='*50}")
-                print(f"City {i} of 5")
+                print(f"City {i} of 3")
                 print('='*50)
                 print(formatted_output)
             except requests.RequestException as e:
