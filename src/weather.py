@@ -154,21 +154,43 @@ def main():
 
     client = WeatherClient(api_key)
 
-    # If no city provided, pick a random one
+    # If no city provided, pick 3 random cities
     if not city:
-        city = client.get_random_city()
-        print(f"No city specified. Randomly selected: {city}\n")
+        cities = []
+        # Get 3 unique random cities
+        available_cities = client.DEFAULT_CITIES.copy()
+        for _ in range(min(3, len(available_cities))):
+            selected_city = random.choice(available_cities)
+            cities.append(selected_city)
+            available_cities.remove(selected_city)
 
-    try:
-        weather_data = client.get_weather(city)
-        formatted_output = client.format_weather(weather_data)
-        print(formatted_output)
-    except requests.RequestException as e:
-        print(f"Error fetching weather data: {e}", file=sys.stderr)
-        sys.exit(1)
-    except ValueError as e:
-        print(f"Error: {e}", file=sys.stderr)
-        sys.exit(1)
+        print(f"No city specified. Randomly selected 3 cities: {', '.join(cities)}\n")
+
+        # Fetch and display weather for all 3 cities
+        for i, city_name in enumerate(cities, 1):
+            try:
+                weather_data = client.get_weather(city_name)
+                formatted_output = client.format_weather(weather_data)
+                print(f"\n{'='*50}")
+                print(f"City {i} of 3")
+                print('='*50)
+                print(formatted_output)
+            except requests.RequestException as e:
+                print(f"Error fetching weather data for {city_name}: {e}", file=sys.stderr)
+            except ValueError as e:
+                print(f"Error for {city_name}: {e}", file=sys.stderr)
+    else:
+        # Single city was specified
+        try:
+            weather_data = client.get_weather(city)
+            formatted_output = client.format_weather(weather_data)
+            print(formatted_output)
+        except requests.RequestException as e:
+            print(f"Error fetching weather data: {e}", file=sys.stderr)
+            sys.exit(1)
+        except ValueError as e:
+            print(f"Error: {e}", file=sys.stderr)
+            sys.exit(1)
 
 
 if __name__ == "__main__":
