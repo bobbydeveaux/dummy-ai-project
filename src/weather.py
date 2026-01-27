@@ -155,29 +155,13 @@ def main():
 
     client = WeatherClient(api_key)
 
-    # If no city provided, pick 20 random cities
+    # If no city provided, pick a random city
     if not city:
-        print("No city specified. Randomly selecting 20 cities...\n")
+        city = client.get_random_city()
+        print(f"No city specified. Randomly selected: {city}\n")
 
-        # Select 20 random cities (without replacement)
-        random_cities = random.sample(client.DEFAULT_CITIES, 20)
-
-        # Fetch and display weather for each random city
-        for idx, selected_city in enumerate(random_cities, 1):
-            print(f"\n{'='*60}")
-            print(f"City {idx}/20: {selected_city}")
-            print('='*60)
-
-            try:
-                weather_data = client.get_weather(selected_city)
-                formatted_output = client.format_weather(weather_data)
-                print(formatted_output)
-            except requests.RequestException as e:
-                print(f"Error fetching weather data for {selected_city}: {e}", file=sys.stderr)
-            except ValueError as e:
-                print(f"Error for {selected_city}: {e}", file=sys.stderr)
-    else:
-        # Single city was specified
+    # Fetch and display weather for the city
+    if city:
         try:
             weather_data = client.get_weather(city)
             formatted_output = client.format_weather(weather_data)
