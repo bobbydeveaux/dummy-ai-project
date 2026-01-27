@@ -1,9 +1,9 @@
 {
-  "prNumber": 142,
+  "prNumber": 162,
   "baseBranch": "main",
-  "headBranch": "feature/65-sprint-2-issue-65",
+  "headBranch": "feature/160-sprint-1-issue-160",
   "conflictedFiles": [
-    "TEST.md"
+    "src/__pycache__/weather.cpython-311.pyc",    "src/weather.py",    "tests/test_weather.py"
   ],
-  "conflictCount": 1
+  "conflictCount": 3
 }
