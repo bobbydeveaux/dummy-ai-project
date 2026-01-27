@@ -155,22 +155,39 @@ def main():
 
     client = WeatherClient(api_key)
 
-    # If no city provided, pick a random city
+    # If no city provided, pick 10 random cities
     if not city:
-        city = client.get_random_city()
-        print(f"No city specified. Randomly selected: {city}\n")
+        print("No city specified. Randomly selecting 10 cities...\n")
 
-    # Fetch and display weather for the city
-    try:
-        weather_data = client.get_weather(city)
-        formatted_output = client.format_weather(weather_data)
-        print(formatted_output)
-    except requests.RequestException as e:
-        print(f"Error fetching weather data: {e}", file=sys.stderr)
-        sys.exit(1)
-    except ValueError as e:
-        print(f"Error: {e}", file=sys.stderr)
-        sys.exit(1)
+        # Select 10 random cities (without replacement)
+        random_cities = random.sample(client.DEFAULT_CITIES, 10)
+
+        # Fetch and display weather for each random city
+        for idx, selected_city in enumerate(random_cities, 1):
+            print(f"\n{'='*60}")
+            print(f"City {idx}/10: {selected_city}")
+            print('='*60)
+
+            try:
+                weather_data = client.get_weather(selected_city)
+                formatted_output = client.format_weather(weather_data)
+                print(formatted_output)
+            except requests.RequestException as e:
+                print(f"Error fetching weather data for {selected_city}: {e}", file=sys.stderr)
+            except ValueError as e:
+                print(f"Error for {selected_city}: {e}", file=sys.stderr)
+    else:
+        # Single city was specified
+        try:
+            weather_data = client.get_weather(city)
+            formatted_output = client.format_weather(weather_data)
+            print(formatted_output)
+        except requests.RequestException as e:
+            print(f"Error fetching weather data: {e}", file=sys.stderr)
+            sys.exit(1)
+        except ValueError as e:
+            print(f"Error: {e}", file=sys.stderr)
+            sys.exit(1)
 
 
 if __name__ == "__main__":
