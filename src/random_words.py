@@ -58,10 +58,10 @@ def main():
     """Main function to run the random words script."""
     generator = RandomWordGenerator()
 
-    # Generate 20 random words
-    words = generator.generate_words(20)
+    # Generate 30 random words
+    words = generator.generate_words(30)
 
-    print("20 Random Words:")
+    print("30 Random Words:")
     print("=" * 30)
     generator.print_words(words)
 
