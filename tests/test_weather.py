@@ -228,9 +228,9 @@ def test_main_with_city_arg_uses_single_city():
             has_test_city = any("TestCity" in str(call) for call in print_calls)
             assert has_test_city
 
-            # Check that we don't have random selection message
-            has_random_msg = any("Randomly selected:" in str(call) for call in print_calls)
-            assert not has_random_msg
+            # Check that we don't have "No city specified" message
+            has_no_city_msg = any("No city specified" in str(call) for call in print_calls)
+            assert not has_no_city_msg
 
 
 if __name__ == "__main__":

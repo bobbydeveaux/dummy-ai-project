@@ -1,9 +1,9 @@
 {
-  "prNumber": 162,
+  "prNumber": 222,
   "baseBranch": "main",
-  "headBranch": "feature/160-sprint-1-issue-160",
+  "headBranch": "feature/186-sprint-1-issue-186",
   "conflictedFiles": [
-    "src/__pycache__/weather.cpython-311.pyc",    "src/weather.py",    "tests/test_weather.py"
+    "src/__pycache__/weather.cpython-311.pyc",    "src/weather.py",    "tests/__pycache__/__init__.cpython-311.pyc",    "tests/__pycache__/test_weather.cpython-311-pytest-9.0.2.pyc",    "tests/test_weather.py"
   ],
-  "conflictCount": 3
+  "conflictCount": 5
 }
