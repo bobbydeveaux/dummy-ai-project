@@ -183,7 +183,7 @@ def test_default_cities_list_exists():
 
 
 def test_main_without_args_selects_random_city():
-    """Test that main() selects a random city when no arguments provided."""
+    """Test that main() selects a single random city when no arguments provided."""
     import weather
     import random
 
@@ -204,7 +204,7 @@ def test_main_without_args_selects_random_city():
             has_random_msg = any("Randomly selected:" in str(call) for call in print_calls)
             assert has_random_msg
 
-            # Check that city names from DEFAULT_CITIES appear
+            # Check that a city name from DEFAULT_CITIES appears in output
             client = weather.WeatherClient()
             has_city = any(any(city in str(call) for city in client.DEFAULT_CITIES) for call in print_calls)
             assert has_city
@@ -228,9 +228,9 @@ def test_main_with_city_arg_uses_single_city():
             has_test_city = any("TestCity" in str(call) for call in print_calls)
             assert has_test_city
 
-            # Check that we don't have random selection message
-            has_random_msg = any("Randomly selected:" in str(call) for call in print_calls)
-            assert not has_random_msg
+            # Check that we don't have "No city specified" message
+            has_no_city_msg = any("No city specified" in str(call) for call in print_calls)
+            assert not has_no_city_msg
 
 
 if __name__ == "__main__":
