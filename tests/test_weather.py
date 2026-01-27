@@ -183,7 +183,7 @@ def test_default_cities_list_exists():
 
 
 def test_main_without_args_selects_random_city():
-    """Test that main() selects 10 random cities when no arguments provided."""
+    """Test that main() selects a random city when no arguments provided."""
     import weather
     import random
 
@@ -200,15 +200,9 @@ def test_main_without_args_selects_random_city():
             # Get all print calls as strings
             print_calls = [str(call) for call in mock_print.call_args_list]
 
-            # Check that "Randomly selecting 10 cities" message appears
-            has_random_msg = any("Randomly selecting 10 cities" in str(call) for call in print_calls)
+            # Check that "Randomly selected:" message appears
+            has_random_msg = any("Randomly selected:" in str(call) for call in print_calls)
             assert has_random_msg
-
-            # Check that "City 1/10", "City 2/10", etc. appear
-            city_headers = [f"City {i}/10" for i in range(1, 11)]
-            for header in city_headers:
-                has_header = any(header in str(call) for call in print_calls)
-                assert has_header, f"Expected to find '{header}' in output"
 
             # Check that city names from DEFAULT_CITIES appear
             client = weather.WeatherClient()
