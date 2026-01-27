@@ -204,6 +204,7 @@ def test_main_without_args_selects_random_city():
             has_random_msg = any("Randomly selected:" in str(call) for call in print_calls)
             assert has_random_msg
 
+
             # Check that city names from DEFAULT_CITIES appear
             client = weather.WeatherClient()
             has_city = any(any(city in str(call) for city in client.DEFAULT_CITIES) for call in print_calls)
