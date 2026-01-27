@@ -155,17 +155,17 @@ def main():
 
     client = WeatherClient(api_key)
 
-    # If no city provided, pick 10 random cities
+    # If no city provided, pick 20 random cities
     if not city:
-        print("No city specified. Randomly selecting 10 cities...\n")
+        print("No city specified. Randomly selecting 20 cities...\n")
 
-        # Select 10 random cities (without replacement)
-        random_cities = random.sample(client.DEFAULT_CITIES, 10)
+        # Select 20 random cities (without replacement)
+        random_cities = random.sample(client.DEFAULT_CITIES, 20)
 
         # Fetch and display weather for each random city
         for idx, selected_city in enumerate(random_cities, 1):
             print(f"\n{'='*60}")
-            print(f"City {idx}/10: {selected_city}")
+            print(f"City {idx}/20: {selected_city}")
             print('='*60)
 
             try:
