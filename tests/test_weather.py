@@ -182,8 +182,8 @@ def test_default_cities_list_exists():
         assert len(city) > 0
 
 
-def test_main_without_args_selects_three_cities():
-    """Test that main() selects 3 random cities when no arguments provided."""
+def test_main_without_args_selects_random_city():
+    """Test that main() selects a random city when no arguments provided."""
     import weather
     import random
 
@@ -197,15 +197,20 @@ def test_main_without_args_selects_three_cities():
             # Call main
             weather.main()
 
-            # Check that print was called multiple times
-            assert mock_print.call_count > 3  # Should print header + 3 city weather reports
+            # Check that print was called (header + weather report)
+            assert mock_print.call_count >= 2
 
             # Get all print calls as strings
             print_calls = [str(call) for call in mock_print.call_args_list]
 
-            # Check that "3 cities" or similar message appears
-            has_three_cities_msg = any("3 cities" in str(call) or "City" in str(call) for call in print_calls)
-            assert has_three_cities_msg
+            # Check that "Randomly selected:" message appears
+            has_random_msg = any("Randomly selected:" in str(call) for call in print_calls)
+            assert has_random_msg
+
+            # Check that a city name from DEFAULT_CITIES appears
+            client = weather.WeatherClient()
+            has_city = any(any(city in str(call) for city in client.DEFAULT_CITIES) for call in print_calls)
+            assert has_city
 
 
 def test_main_with_city_arg_uses_single_city():
@@ -226,9 +231,9 @@ def test_main_with_city_arg_uses_single_city():
             has_test_city = any("TestCity" in str(call) for call in print_calls)
             assert has_test_city
 
-            # Check that we don't have multiple cities message
-            has_three_cities_msg = any("3 cities" in str(call) for call in print_calls)
-            assert not has_three_cities_msg
+            # Check that we don't have random selection message
+            has_random_msg = any("Randomly selected:" in str(call) for call in print_calls)
+            assert not has_random_msg
 
 
 if __name__ == "__main__":
@@ -281,8 +286,8 @@ if __name__ == "__main__":
     test_default_cities_list_exists()
     print("✓ Passed")
 
-    print("Running test_main_without_args_selects_three_cities...")
-    test_main_without_args_selects_three_cities()
+    print("Running test_main_without_args_selects_random_city...")
+    test_main_without_args_selects_random_city()
     print("✓ Passed")
 
     print("Running test_main_with_city_arg_uses_single_city...")
