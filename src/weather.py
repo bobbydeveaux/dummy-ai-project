@@ -160,28 +160,17 @@ def main():
         city = client.get_random_city()
         print(f"No city specified. Randomly selected: {city}\n")
 
-        try:
-            weather_data = client.get_weather(city)
-            formatted_output = client.format_weather(weather_data)
-            print(formatted_output)
-        except requests.RequestException as e:
-            print(f"Error fetching weather data for {city}: {e}", file=sys.stderr)
-            sys.exit(1)
-        except ValueError as e:
-            print(f"Error for {city}: {e}", file=sys.stderr)
-            sys.exit(1)
-    else:
-        # Single city was specified
-        try:
-            weather_data = client.get_weather(city)
-            formatted_output = client.format_weather(weather_data)
-            print(formatted_output)
-        except requests.RequestException as e:
-            print(f"Error fetching weather data: {e}", file=sys.stderr)
-            sys.exit(1)
-        except ValueError as e:
-            print(f"Error: {e}", file=sys.stderr)
-            sys.exit(1)
+    # Fetch and display weather for the city
+    try:
+        weather_data = client.get_weather(city)
+        formatted_output = client.format_weather(weather_data)
+        print(formatted_output)
+    except requests.RequestException as e:
+        print(f"Error fetching weather data: {e}", file=sys.stderr)
+        sys.exit(1)
+    except ValueError as e:
+        print(f"Error: {e}", file=sys.stderr)
+        sys.exit(1)
 
 
 if __name__ == "__main__":
